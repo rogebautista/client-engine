@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -8,8 +9,21 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '_',
     pathMatch: 'full'
+  },
+  {
+    path: '_',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/split-pane/split-pane.module').then( m => m.SplitPanePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
 ];
 

@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro de nuevo usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="register-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-input label="Nombre" formControlName="firstName" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Apellido Paterno" formControlName="lastName" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Apellido Materno" formControlName="secondLastName" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Correo electrónico" formControlName="email" type="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Contraseña" formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Confirmar contraseña" formControlName="validatePassword" type="password"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Registrar</ion-button>
+    </form>
+  </div>
+
+</ion-content>
